@@ -9,6 +9,13 @@ class Bank {
         this.clients = clients;
     }
 
+    create() {
+        let clientsblock = document.querySelector('.clients');
+        for (let client of this.clients) {
+            clientsblock.append(client.create());
+        }
+    }
+
     async calculateAllMoneyOwing() {
         let owingMoney = 0;
         for (let client of this.clients) {
