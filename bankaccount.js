@@ -3,6 +3,7 @@ export class BankAccount {
     activeDate;
     cardExpireDate;
     currencyType;
+    type;
 
     constructor(activeDate, expireDate, currency) {
         this.isActive = true;
@@ -10,10 +11,29 @@ export class BankAccount {
         this.cardExpireDate = expireDate;
         this.currencyType = currency;
     }
+
+    create() {
+        let bankAccDiv = document.createElement('div');
+        let bankHeading = document.createElement('h2');
+        bankHeading.innerHTML = this.type == 'credit' ? 'Credit Account' : 'Debit Account';
+        bankAccDiv.append(bankHeading);
+        let active = document.createElement('p');
+        active.innerHTML = this.isActive ? 'ACTIVE' : 'NOT ACTIVE';
+        bankAccDiv.append(active);
+        let activeDate = document.createElement('p');
+        activeDate.innerHTML = this.activeDate;
+        bankAccDiv.append(activeDate);
+        let cardDate = document.createElement('p');
+        cardDate.innerHTML = this.cardExpireDate;
+        bankAccDiv.append(cardDate);
+        let currency = document.createElement('p');
+        currency.innerHTML = this.currencyType;
+        bankAccDiv.append(currency);
+        return bankAccDiv;
+    }
 }
 
 export class DebitAccount extends BankAccount {
-    type;
     currentBalance;
 
     constructor(activeDate, expireDate, currency, ballance) {
@@ -21,10 +41,17 @@ export class DebitAccount extends BankAccount {
         this.type = 'debit';
         this.currentBalance = ballance;
     }
+
+    create() {
+        let bankAccDiv = super.create();
+        let ballance = document.createElement('p');
+        ballance.innerHTML = this.currentBalance;
+        bankAccDiv.append(ballance);
+        return bankAccDiv;
+    }
 }
 
 export class CreditAccount extends BankAccount {
-    type;
     personalFunds;
     creditFunds;
     creditLimit;
@@ -36,4 +63,19 @@ export class CreditAccount extends BankAccount {
         this.creditFunds = creditFund;
         this.creditLimit = creditLimit;
     }
+
+    create() {
+        let bankAccDiv = super.create();
+        let ballance = document.createElement('p');
+        ballance.innerHTML = this.personalFunds;
+        bankAccDiv.append(ballance);
+        let credit = document.createElement('p');
+        credit.innerHTML = this.creditFunds;
+        bankAccDiv.append(credit);
+        let creditLimit = document.createElement('p');
+        creditLimit.innerHTML = this.creditLimit;
+        bankAccDiv.append(creditLimit);
+        return bankAccDiv;
+    }
+
 }
