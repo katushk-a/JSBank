@@ -63,14 +63,3 @@ class Bank {
         return money;
     }
 }
-
-
-
-
-let bank = new Bank([
-    new Client('Oleksii', 'Biriukov', new DebitAccount('ll', 'kkk', 'USD', 100000), new CreditAccount('dd', 'dd', 'USD', 100000, 0, 100000)),
-    new Client('Oleksii', 'Biriukov', new DebitAccount('ll', 'kkk', 'USD', 100000), new CreditAccount('dd', 'dd', 'USD', 100000, 0, 100000)),
-]);
-
-//console.log(bank);
-console.log(bank.calculateMoneyInBank());
